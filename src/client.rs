@@ -1,24 +1,18 @@
 use httpclient::{Client, InMemoryError};
 use plaid::model::{CountryCode, LinkTokenCreateRequestUser, Products};
 use plaid::request::link_token_create::LinkTokenCreateRequired;
-
+use std::str::FromStr;
+use strum_macros::{Display, EnumString};
 pub struct PlaidClient {
     client: plaid::PlaidClient,
     pub name: String,
 }
 
+#[derive(Debug, EnumString, Display, PartialEq)]
+#[strum(serialize_all = "snake_case")]
 pub enum PlaidEnv {
     Sandbox,
     Production,
-}
-
-impl PlaidEnv {
-    fn as_str(&self) -> &'static str {
-        match self {
-            PlaidEnv::Sandbox => "sandbox",
-            PlaidEnv::Production => "production",
-        }
-    }
 }
 
 pub struct PlaidLinkTokenError {
@@ -27,7 +21,7 @@ pub struct PlaidLinkTokenError {
 impl PlaidClient {
     pub fn new(env: PlaidEnv, name: String, client_id: String, secret: String) -> Self {
         // Format the base URL
-        let base_url = format!("https://{}.plaid.com", env.as_str());
+        let base_url = format!("https://{}.plaid.com", env.to_string());
 
         let client = Client::new().base_url(base_url.as_str());
         let auth = plaid::PlaidAuth::ClientId {

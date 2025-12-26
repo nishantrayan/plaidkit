@@ -10,3 +10,5 @@ homepage = "https://github.com/nishantrayan/plaidkit"
 [dependencies]
 plaid = { git = "https://github.com/kurtbuilds/plaid-rs" }
 httpclient = "0.21.3"
+strum_macros = "0.27.2"
+strum = "0.27.2"
