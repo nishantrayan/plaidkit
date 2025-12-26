@@ -8,5 +8,5 @@ repository = "https://github.com/nishantrayan/plaidkit"
 homepage = "https://github.com/nishantrayan/plaidkit"
 
 [dependencies]
-plaid = { path = "../plaid-rs" }
+plaid = { git = "https://github.com/kurtbuilds/plaid-rs" }
 httpclient = "0.21.3"
