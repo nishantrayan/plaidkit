@@ -1,0 +1,10 @@
+[package]
+name = "plaidkit"
+version = "0.1.0"
+edition = "2024"
+description = "SDK for interacting with Plaid APIs"
+license = "MIT"
+repository = "https://github.com/nishantrayan/plaidkit"
+homepage = "https://github.com/nishantrayan/plaidkit"
+
+[dependencies]
